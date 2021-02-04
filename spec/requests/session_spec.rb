@@ -37,7 +37,7 @@ RSpec.describe 'Session', type: :request do
       end
     end
   end
-  describe 'DELETE /api/v1/auth/sign_out' do
+  describe 'DELETE /auth/sign_out' do
     before do
       post @sign_in_url, params: @login_params, as: :json
       @headers = {

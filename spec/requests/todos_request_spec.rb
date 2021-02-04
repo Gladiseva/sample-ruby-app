@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Todos API', type: :request do
+  let(:user) { create(:user) }
   let!(:todos) { create_list(:todo, 10) }
   let(:todo_id) { todos.first.id }
 
   describe 'GET /todos' do
-    before { get '/todos' }
+    before { get '/todos', params: {}, headers: login(user) }
 
     it 'returns todos' do
       expect(json).not_to be_empty
